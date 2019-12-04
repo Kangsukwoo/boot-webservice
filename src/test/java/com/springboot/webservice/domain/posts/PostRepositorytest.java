@@ -2,6 +2,7 @@ package com.springboot.webservice.domain.posts;
 
 import static org.hamcrest.CoreMatchers.is;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.runner.RunWith;
 import org.junit.After;
@@ -14,6 +15,7 @@ import com.springboot.webservice.domain.posts.Posts;
 import com.springboot.webservice.domain.posts.PostsRepository;
 
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -46,6 +48,27 @@ public class PostRepositorytest {
 		assertThat(posts.getTitle(),is("testTitle"));
 		assertThat(posts.getContent(),is("testContent"));
 		
+	}
+	
+	
+	public void insert_BaseTimeEntity() {
+		
+		//given
+		LocalDateTime now = LocalDateTime.now();
+		postsRepository.save(Posts.builder()
+				.title("testTitle")
+				.content("testContent")
+				.author("xialk4@gmail.com")
+				.build());
+		
+		//when
+		List<Posts> postList = postsRepository.findAll();
+		
+		
+		//then
+		Posts posts = postList.get(0);
+		assertTrue(posts.getCreatedDate().isAfter(now));
+		assertTrue(posts.getModifiedDate().isAfter(now));
 	}
 
 }

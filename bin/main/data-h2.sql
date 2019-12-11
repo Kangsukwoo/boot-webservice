@@ -1,2 +1,1 @@
-INSERT INTO Posts (title, author, content, created_Date, modified_Date) VALUES ("TestTitle1", "TestAuthor1@gmail.com", "TestContent1", Now(), Now())
-
+insert into posts (title, author, content, created_date, modified_date) values ('test1', 'test1@gmail.com', 'test1_content', now(), now());

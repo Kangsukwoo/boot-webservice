@@ -3,6 +3,7 @@ package com.springboot.webservice.domain.posts;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.springboot.webservice.domain.BaseTimeEntity;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Posts extends BaseTimeEntity{
 	
 	@Id //PK
-	@GeneratedValue //PK생성규칙, default = Auto
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //PK생성규칙, default = Auto
 	private long id;
 	
 	@Column(length = 500, nullable = false) //테이블의 컬럼

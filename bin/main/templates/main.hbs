@@ -14,7 +14,32 @@
     <div class="col-md-12">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#savePostsModal">作成</button>
     </div>
-
+    </br>
+    </br>
+    <!-- list area -->
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+                <tr>
+                    <th>No</th>
+                    <th>タイトル</th>
+                    <th>作成者</th>
+                    <th>最終修正日</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#each posts}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{title}}</td>
+                    <td>{{author}}</td>
+                    <td>{{modifiedDate}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- modal area -->
     <div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

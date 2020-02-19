@@ -12,6 +12,10 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
+#빌드시 Permission denied로 인해 권한 추가
+before_script:
+- chmod a+x gradlew
+
 script: "./gradlew clean build"
 
 # CI 실행 완료시 메일로 알람

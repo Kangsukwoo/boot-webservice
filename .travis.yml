@@ -18,6 +18,20 @@ before_script:
 
 script: "./gradlew clean build"
 
+# Travis CI & S3연동
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: boot-webservice-deploy # S3 버킷
+    region: ap-northeast-1
+    skip_cleanup: true
+    acl: public_read
+    wait-until-deployed: true
+    on:
+      repo: soguffee/boot-webservice #Github 주소
+      branch: master
+
 # CI 실행 완료시 메일로 알람
 notifications:
   email:

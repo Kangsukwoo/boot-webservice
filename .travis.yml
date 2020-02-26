@@ -18,6 +18,11 @@ before_script:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r boot-webservice *
+  - mkdir -p deploy
+  - mv boot-webservice.zip deploy/boot-webservice.zip
+
 # Travis CI & S3연동
 deploy:
   - provider: s3
@@ -27,6 +32,7 @@ deploy:
     region: ap-northeast-1
     skip_cleanup: true
     acl: public_read
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
     on:
       repo: soguffee/boot-webservice #Github 주소

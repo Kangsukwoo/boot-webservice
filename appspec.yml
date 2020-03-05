@@ -4,6 +4,14 @@ files:
   - source:  /
     destination: /home/soguffee/app/travis/build/
     
+permissions:
+  - object: /home/soguffee/app/travis/build/execute-deploy.sh
+    pattern: "*.sh"
+    owner: soguffee
+    mode: 755
+    type:
+      - file
+    
 hooks:
   AfterInstall: # 배포가 끝나면 아래 명령어를 실행
     - location: execute-deploy.sh

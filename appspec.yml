@@ -5,7 +5,7 @@ files:
     destination: /home/soguffee/app/travis/build/
     
 permissions:
-  - object: /home/soguffee/app/travis/build/execute-deploy.sh
+  - object: /home/soguffee/app/travis/build/
     pattern: "*.sh"
     owner: soguffee
     mode: 755

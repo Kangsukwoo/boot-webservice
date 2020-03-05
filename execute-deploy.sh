@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/soguffee/app/travis/deploy.sh > /dev/null 2> /dev/null < /dev/null &
+sh /home/soguffee/app/travis/deploy.sh > /dev/null 2> /dev/null < /dev/null &
